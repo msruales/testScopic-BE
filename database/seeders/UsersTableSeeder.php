@@ -18,9 +18,9 @@ class UsersTableSeeder extends Seeder
     {
         //
         User::create([
-            'name' => 'user',
-            'email' => 'user1',
-            'password' => Hash::make('user'),
+            'name' => 'user1',
+            'email' => 'user1@user.com',
+            'password' => Hash::make('user2'),
             'is_admin'=>0,
             'remember_token' => Str::random(10),
         ]);
@@ -36,9 +36,9 @@ class UsersTableSeeder extends Seeder
         );
         User::create(
             [
-                'name' => 'admin',
-                'email' => 'admin1',
-                'password' => Hash::make('admin'),
+                'name' => 'admin1',
+                'email' => 'admin@admin.com',
+                'password' => Hash::make('admin2'),
                 'is_admin'=>1,
                 'remember_token' => Str::random(10),
             ]
