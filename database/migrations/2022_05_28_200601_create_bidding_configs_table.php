@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('automatic_offer_settings');
+        Schema::dropIfExists('bidding_configs');
     }
 };
