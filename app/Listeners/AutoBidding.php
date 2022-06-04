@@ -76,14 +76,14 @@ class AutoBidding implements ShouldQueue
                     if($user->config->amount <= $current_percentage && $user->config->is_send_notification === 0 ) {
                         $user->config->is_send_notification = 1;
                         $user->config->save();
-                        Mail::to($user->email)->send(new AutoBiddingNotification($user, 'percentage'));
+                        Mail::to($user->email)->send(new AutoBiddingNotification($user, 'percentage', $new_auction));
                     }
 
                     if($user->config->amount == 0 ) {
                         $automatic_item->status = 0;
                         $automatic_item->save();
                         event( new AutomaticOfferUpdated($automatic_item));
-                        Mail::to($user->email)->send(new AutoBiddingNotification($user, 'end'));
+                        Mail::to($user->email)->send(new AutoBiddingNotification($user, 'end', $new_auction));
                     }
 
                     event( new AuctionRegistered($new_auction));

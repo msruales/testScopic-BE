@@ -2,8 +2,8 @@
 
 namespace App\Console\Commands;
 
+use App\Mail\AuctionEnded;
 use App\Mail\ItemBill;
-use App\Models\AutomaticOffer;
 use App\Models\Item;
 use Carbon\Carbon;
 use Exception;
@@ -54,6 +54,15 @@ class CheckItemsDate extends Command
 
                         Mail::to($last_bid->user->email)->send(new ItemBill($item, $last_bid->bid, $last_bid->user));
                         $info .= $last_bid->user->email;
+
+                        $filter_bids = $bids->where('user_id','!=',$last_bid->user_id);
+
+                        $emails = $filter_bids->map(function($bid){
+                            return $bid->user->email;
+                        })->unique()->toArray();
+
+                        Mail::to($emails)->send(new AuctionEnded($item));
+
                     }
                 }
             }

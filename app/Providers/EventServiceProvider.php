@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Events\AuctionRegistered;
 use App\Listeners\AutoBidding;
+use App\Listeners\SendNewBidNotification;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -22,6 +23,7 @@ class EventServiceProvider extends ServiceProvider
         ],
         AuctionRegistered::class => [
             AutoBidding::class,
+            SendNewBidNotification::class
         ],
     ];
 

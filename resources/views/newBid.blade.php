@@ -51,9 +51,8 @@
 <body>
 <div class="card" style="width: 18rem;">
     <div class="card-body">
-        <h5 class="card-title">Auto Bidding: {{ $type_message === 'percentage' ? "About to finish" : "Finished" }}</h5>
-        <p class="card-text">{{ $type_message === "percentage" ? "the car offer has consumed percent of the last amount added" : "The amount for the auto offers has ended" }}</p>
-        <h6 class="card-subtitle mb-2 text-muted">{{ $type_message === 'end' ? "Item $item_name status $state" : ""}}</h6>
+        <h5 class="card-title">A new bid was made on the item {{$item->name}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Value ${{$bid}}</h6>
     </div>
 </div>
 

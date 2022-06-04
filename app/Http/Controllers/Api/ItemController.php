@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Events\ItemUpdated;
 use App\Http\Requests\ItemRequest;
 use App\Models\Auction;
 use App\Models\Item;
@@ -13,7 +14,6 @@ class ItemController extends ApiController
 
     public function index(Request $request)
     {
-//        $sort = $request->sort;
 
         $item = Item::where([
             ['description', 'LIKE', '%' . $request->description . '%'],
@@ -84,6 +84,8 @@ class ItemController extends ApiController
     {
         $item->update($request->validated());
 
+        event( new ItemUpdated($item));
+
         return $this->successResponse([
             'item' => $item
         ]);
@@ -94,7 +96,7 @@ class ItemController extends ApiController
     public function destroy(Item $item)
     {
         if (!$item->delete()) {
-            return $this->errorResponse();
+            return $this->errorResponse([]);
         }
 
         return $this->successResponse(['id' => $item->id]);

@@ -34,16 +34,17 @@ class UserController extends ApiController
     public function getAwardedItems(Request $request)
     {
         $user = $request->user();
+        $items_awarded = Item::withTrashed()->where('item_owner', $user->id)->get();
 
-        return $this->successResponse($user->awardedItems);
+        return $this->successResponse($items_awarded);
     }
 
     public function getAwardedItemById(Request $request, $id)
     {
         $user = $request->user();
-        $item = $user->awardedItems()->findOrFail($id);
+        $item = $user->awardedItems()->withTrashed()->findOrFail($id);
         if (isset($item))
-            return $this->successResponse([$item, $item->bids->last()->bid]);
+            return $this->successResponse(['item' => $item,'last_bid' => $item->bids->last()->bid]);
     }
 
 }

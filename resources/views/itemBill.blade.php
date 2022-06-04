@@ -77,9 +77,6 @@
 <body>
 <header>
     <h1>Invoice</h1>
-    <address>
-        <p>Scopic Test Invoice</p>
-    </address>
 </header>
 <article>
     <address>
