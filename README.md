@@ -1,11 +1,10 @@
 ## Steps for testing the test project with Docker
 
 ### requirements:
-    - docker installed
+    have docker installed
 ### commands:
 
-Important note!
-you should add the value "db" for  DB_HOST on .env file, like this: DB_HOST=db
+Important note!: You should add the value "db" for  DB_HOST on .env file, like this: DB_HOST=db
 
 - command 1: docker-compose build
 - command 2: docker-compose up -d
