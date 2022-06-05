@@ -19,7 +19,7 @@ The url for the site is: http://127.0.0.1:8000 on your browser
 - https://www.postman.com/security-administrator-19215376/workspace/testscopic/request/20858243-197853af-79db-4ac1-9307-13f48cb1514f
 
 
-## Setup and configure the Back End (requirements and steps) ( WITHOUT DOCKER!! )
+## Setup and configure the Back End (requirements and steps) ( WITHOUT DOCKER!! recommended method )
 
 - PHP >= 8.1.4
 - Have Composer installed
