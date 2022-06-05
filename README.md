@@ -1,4 +1,26 @@
-## Setup and configure the Back End (requirements and steps)
+## Steps for testing the test project with Docker
+
+### requirements:
+    - docker installed
+### commands:
+
+Important note!
+you should add the value "db" for  DB_HOST on .env file, like this: DB_HOST=db
+
+- command 1: docker-compose build
+- command 2: docker-compose up -d
+- command 3: docker-compose exec app php artisan migrate --seed
+  * Command 4 should run on a new tabs of console, also for command 5 because these commands will be running for all time
+- command 4: docker-compose exec app php artisan queue:work 
+- command 5: docker-compose exec app php artisan schedule:work
+
+The url for the site is: http://127.0.0.1:8000 on your browser
+## Postman Api
+
+- https://www.postman.com/security-administrator-19215376/workspace/testscopic/request/20858243-197853af-79db-4ac1-9307-13f48cb1514f
+
+
+## Setup and configure the Back End (requirements and steps) ( WITHOUT DOCKER!! )
 
 - PHP >= 8.1.4
 - Have Composer installed
